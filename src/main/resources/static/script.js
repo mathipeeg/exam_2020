@@ -12,14 +12,6 @@ function getAll() {
             $.each(data.result, function (index, value){
                 console.log(value.id);
                 writeHTML(value, data.supervisor[index], data.supervisorsList);
-
-                // $("#students").append("<p id='p-" + value.id + "'> Name: <input id='name-" + value.id + "' type='text' name='name' value='" + value.name + "'>" +
-                //     " E-mail: <input id='email-" + value.id + "' type='text' name='email' value='" + value.email + "'>" +
-                //     " Supervisor: <select id='supervisor-drp-" + value.id + "'>" +
-                //     " </select> " +
-                //     " <button type='submit' onclick='updateStudents(" + value.id + ")'>Update</button> " +
-                //     "<button type='submit' onclick='deleteStudentButton(" + value.id + ")'>Delete</button>")
-                // dropDown(data.supervisorsList, data.supervisor[index].id, value.id);
             })
         },
         error: function () {
@@ -69,14 +61,6 @@ function addStudent(){
         data: JSON.stringify(studObj),
         success:function (data){
             writeHTML(data.result[0], data.supervisor[0], data.supervisorsList);
-
-            // $("#students").append("<p id='p-" + data.result[0].id + "'> Name: <input id='name-" + data.result[0].id + "' type='text' name='name' value='" + data.result[0].name + "'>" +
-            //     " E-mail: <input id='email-" + data.result[0].id + "' type='text' name='email' value='" + data.result[0].email + "'>" +
-            //     " Supervisor: <select id='supervisor-drp-" + data.result[0].id + "'>" +
-            //     " </select> " +
-            //     " <button type='submit' onclick='updateStudents(" + data.result[0].id + ")'>Update</button> " +
-            //     "<button type='submit' onclick='deleteStudentButton(" + data.result[0].id + ")'>Delete</button>")
-            // dropDown(data.supervisorsList, data.supervisor[0].id, data.result[0].id);
         },
         error: function(){
             console.log("Error in addStudent()!")
@@ -106,13 +90,6 @@ function updateStudents(id){
             $("#students").html('');
             $.each(data.result, function (index, value){
                 writeHTML(value, data.supervisor[index], data.supervisorsList);
-                // $("#students").append("<p id='p-" + value.id + "'> Name: <input id='name-" + value.id + "' type='text' name='name' value='" + value.name + "'>" +
-                //     " E-mail: <input id='email-" + value.id + "' type='text' name='email' value='" + value.email + "'>" +
-                //     " Supervisor: <select id='supervisor-drp-" + value.id + "'>" +
-                //     " </select> " +
-                //     " <button type='submit' onclick='updateStudents(" + value.id + ")'>Update</button> " +
-                //     "<button type='submit' onclick='deleteStudentButton(" + value.id + ")'>Delete</button>")
-                // dropDown(data.supervisorsList, data.supervisor[index].id, value.id);
             })
         },
         error: function(){
@@ -140,7 +117,7 @@ function deleteStudentButton(id) {
         type: "POST",
         contentType: "application/JSON",
         data: JSON.stringify(studObj),
-        success: function (data) {
+        success: function () {
             $("#p-" + id).html('');
         }
     });
