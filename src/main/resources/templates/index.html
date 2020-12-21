@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script type="text/javascript" th:src="@{/script.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body onload="load()">
+    <h1>Add student:</h1>
+    <form method="post" id="add-student-form">
+        <input type="text" placeholder="name" id="student-name" name="name">
+        <input type="text" placeholder="email" id="student-email" name="email">
+        <select id="add-supervisor">
+            <option th:each="super : ${supervisors}" th:value="${super.id}" th:text="${super.name}" id="supervisor" ></option>
+        </select>
+        <input type="submit">
+    </form>
+    <br>
+    <h1>List of students:</h1>
+    <div id="students"></div>
+</body>
+</html>
